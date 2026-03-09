@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Video Processing Pipeline — Case Study</title>
+  <meta name="description" content="Automated post-production: overlays, face blur, and dynamic watermarks with brightness-aware tuning."/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="portfolio.css"/>
+</head>
+<body>
+<header class="header">
+  <div class="container nav">
+    <div class="brand"><span class="dot"></span><strong>Jia Yu Lim</strong></div>
+    <nav class="nav-right">
+      <a href="home.html">Home</a>
+      <a href="resume.html">Resume</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <!-- Tier 1: Speed Read -->
+  <section class="section card">
+    <div class="speed-read">
+      <h1>Video Processing Pipeline</h1>
+      <p><strong>One‑liner:</strong> Automated video post‑production tool that composites talking‑head overlays, detects/blurs passerby faces, and adds dynamic watermarks with intelligent brightness adjustment.</p>
+
+      <div class="row chips">
+        <span class="tag">Group project</span>
+        <span class="tag">4 weeks</span>
+        <span class="tag">Stack: Python, OpenCV, NumPy, Matplotlib</span>
+        <span class="tag"><a href="https://github.com/bing9821/Video-preprocessing.git" target="_blank" rel="noopener">GitHub</a></span>
+      </div>
+
+      <p><strong>Problem → Outcome:</strong> Raw street footage needs extensive manual editing: face privacy compliance, branding overlays, presenter integration, and lighting consistency. I built an automated pipeline that processes multi‑source videos with Haar Cascade face detection, adaptive night‑mode brightening, and timed watermark rotation—transforming hours of editing into a single script execution.</p>
+
+      <h4>Three Proof Points</h4>
+      <ul class="bullets">
+        <li>Haar Cascade face detection with automatic averaging blur applied to all detected face regions</li>
+        <li>Adaptive brightness analysis with histogram‑based day/night classification and +20 additive correction for low‑light scenes</li>
+        <li>Multi‑layer compositing: talking‑head overlay with green‑channel keying, dual rotating watermarks (5s intervals), static logo, 2‑second fade transitions</li>
+      </ul>
+
+      <h4>Results</h4>
+      <ul class="bullets">
+        <li>Processes 1280×720 video at 30fps with 5 simultaneous operations per frame</li>
+        <li>Privacy‑compliant face blurring with bounding box visualization for all detected passersby</li>
+        <li>Seamless multi‑video merge: main footage → end screen with synchronized fade‑in/fade‑out effects</li>
+      </ul>
+
+      <p><strong>Skills:</strong> Computer Vision • Video Processing • Real‑time Detection • Frame Manipulation • NumPy Optimization • Data Visualization • Python Automation</p>
+    </div>
+  </section>
+
+  <div class="section"></div>
+
+  <!-- Tier 2: Collapsible Details -->
+  <section class="details" data-collapsible>
+    <div class="details-header">
+      <h3>Approach</h3>
+      <span class="toggle">Read details ▼</span>
+    </div>
+    <div class="details-body">
+      <p>Chose OpenCV for robust cross‑platform video I/O and Haar Cascades for lightweight face detection; implemented green‑channel keying for talking‑head transparency; separated concerns into modular functions (detection, compositing, effects) for maintainability; used histogram analysis to calculate overall video brightness for intelligent day/night classification rather than per‑frame thresholds.</p>
+    </div>
+  </section>
+
+  <section class="details section" data-collapsible>
+    <div class="details-header">
+      <h3>Architecture / Data Flow</h3>
+      <span class="toggle">Read details ▼</span>
+    </div>
+    <div class="details-body">
+      <ul>
+        <li>Input sources: Main video (office.mp4), talking‑head overlay (talking.mp4), end screen (endscreen.mp4)</li>
+        <li>Processing pipeline: Resize → brightness calculation → face detection/blur → overlay composite → watermark rotation → logo merge → fade effects</li>
+        <li>Face detection: CascadeClassifier (scaleFactor=1.3, minNeighbors=5) with 99×99 averaging blur applied to detected ROIs</li>
+        <li>Brightness system: Per‑frame grayscale mean calculation → histogram aggregation → overall average threshold (100) → +20 additive correction for night scenes</li>
+        <li>Watermark rotation: Frame‑count modulo logic (5‑second intervals × 30fps = 150 frames/segment) cycling between two branded overlays via mask compositing</li>
+        <li>Output: MJPG‑encoded AVI at 1280×720@30fps with real‑time progress percentage tracking</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="details section" data-collapsible>
+    <div class="details-header">
+      <h3>Key Functions</h3>
+      <span class="toggle">Read details ▼</span>
+    </div>
+    <div class="details-body">
+      <ul>
+        <li><code>blurface()</code> — Haar Cascade detection → 99×99 averaging blur on face ROIs with blue rectangle visualization</li>
+        <li><code>overlay_talking()</code> — Green‑channel keying (G≤240 mask) for half‑size corner composite at bottom‑left</li>
+        <li><code>switch_wm_sec()</code> — Modular watermark alternation using segment indexing based on elapsed frames</li>
+        <li><code>fadeIn_fadeOut()</code> — Alpha blending for 2‑second fade at video head/tail boundaries (first/last 60 frames)</li>
+        <li><code>isDayOrNight()</code> — Statistical brightness classifier using mean of all frame brightness values with Matplotlib histogram</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="details section" data-collapsible>
+    <div class="details-header">
+      <h3>What I Learned & Next Steps</h3>
+      <span class="toggle">Read details ▼</span>
+    </div>
+    <div class="details-body">
+      <ul>
+        <li>MJPG codec has compatibility issues on macOS—MP4/H.264 export would improve cross‑platform playback</li>
+        <li>Face detection accuracy drops in low‑light conditions; integrating DNN‑based models (dlib/MTCNN) would boost recall</li>
+        <li>Current temporal smoothing implementation has scope issues; refactoring to maintain frame history across calls would reduce detection jitter</li>
+        <li>Next: Add multi‑threading for faster encoding, implement audio passthrough, support batch video processing</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="details section" data-collapsible>
+    <div class="details-header">
+      <h3>Screenshots / Video Output</h3>
+      <span class="toggle">View media ▼</span>
+    </div>
+    <div class="details-body">
+      <p>Histogram of brightness & Video Output with blurred faces</p>
+      <!-- Example: <img src="assets/images/screenshot1.png" alt="Project screenshot"> -->
+       <img src="/Images_videos/daytime.png" alt="Results chart" style="width:100%; border-radius:8px;">
+       <video width="100%" controls style="border-radius:8px;">
+         <source src="/Images_videos/processed_video.mp4" type="video/mp4">
+       </video>
+    </div>
+  </section>
+
+  <section class="details section" data-collapsible>
+    <div class="details-header">
+      <h3>Credits</h3>
+      <span class="toggle">Read details ▼</span>
+    </div>
+    <div class="details-body">
+      <p>Haar Cascade XML from OpenCV pre‑trained models</p>
+    </div>
+  </section>
+
+  <p class="section"><a href="home.html">← Back to Home</a></p>
+</main>
+
+ <footer class="container footer">
+    <div>
+      <strong>Contact:</strong> <a href="mailto:jylim0924@gmail.com">jylim0924@gmail.com</a> • 
+      <a href="https://github.com/bing9821" target="_blank" rel="noopener">GitHub</a> • 
+      <a href="https://www.linkedin.com/in/jia-yu-475264307?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener">LinkedIn_jiayu</a> • 
+      <a href="https://wa.me/60165474145" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i> +60 16-547 4145</a>
+    </div>
+    <p class="muted">© <span id="y"></span> Jia Yu Lim</p>
+  </footer>
+
+<script src="portfolio.js"></script>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>

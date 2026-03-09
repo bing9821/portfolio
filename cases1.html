@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>NIUKEE E‑commerce Platform — Case Study</title>
+  <meta name="description" content="Speed Read + details: Apriori‑driven recommendations with auto bundle discounts."/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="portfolio.css"/>
+
+</head>
+<body>
+<header class="header">
+  <div class="container nav">
+    <div class="brand"><span class="dot"></span><strong>Jia Yu Lim</strong></div>
+    <nav class="nav-right">
+      <a href="home.html">Home</a>
+      <a href="resume.html" target="_blank" rel="noopener">Resume</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="section card">
+    <div class="speed-read">
+      <h1>NIUKEE E‑commerce Platform</h1>
+      <p><strong>One‑liner:</strong> Full‑stack shopping site with intelligent recommendations that auto‑apply bundle discounts for frequently co‑purchased items.</p>
+
+      <div class="row chips">
+        <span class="tag">Role: Solo</span>
+        <span class="tag">Six to Eight Months</span>
+        <span class="tag">Stack: Node.js, Express, MongoDB, Handlebars</span>
+        <span class="tag"><a href="https://github.com/bing9821/e-commerce-website.git" target="_blank" rel="noopener">GitHub</a></span>
+      </div>
+
+      <p><strong>Problem → Outcome:</strong> Most stores show generic suggestions or hand‑made bundles. I implemented data‑driven Market Basket Analysis (Apriori) to surface real co‑purchase pairs, then applied discounts automatically at cart time—lifting average order value and smoothing the buyer journey.</p>
+
+      <ul class="bullets">
+        <li><strong>Proof Points:</strong> Apriori rule mining (configurable support/confidence); secure REST APIs with bcrypt + structured errors; modular services (MBA, recommendations, email, shipping).</li>
+        <li><strong>Results:</strong> Instant cart checks against 1,000+ rules; full flow catalog → checkout → tracking with emails; session auth with profiles, points, vouchers.</li>
+        <li><strong>Skills:</strong> Backend Dev • Data Mining • REST API • DB Modeling • Auth & Security • Service Architecture • Full‑stack</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="section"></div>
+
+  <section class="details" data-collapsible>
+    <div class="details-header">
+      <h3>Approach</h3>
+      <span class="toggle">Read details</span>
+    </div>
+    <div class="details-body">
+      <p>Chose Apriori for explainable, auditable rules. Pre‑generated rules from historical transactions for speed. Used MongoDB for flexible product/order schemas. Separated concerns into services for maintainability and growth.</p>
+    </div>
+  </section>
+
+  <section class="details section" data-collapsible>
+    <div class="details-header">
+      <h3>Architecture / Data Model</h3>
+      <span class="toggle">Read details</span>
+    </div>
+    <div class="details-body">
+      <ul>
+        <li>SSR: Handlebars templates with session data</li>
+        <li>Express routes → controllers → services (MBA/reco/email/shipping) → Mongoose models</li>
+        <li>Collections: User, Product, Cart, Order, Voucher, RedeemedVoucher (indexed)</li>
+        <li>Auth: express‑session + bcrypt; guarded routes</li>
+        <li>MBA: transactions → Apriori → rules store (CSV/collection) → real‑time cart match → discount calc</li>
+      </ul>
+    </div>
+  </section>
+
+
+  <section class="details section" data-collapsible>
+    <div class="details-header">
+      <h3>What I Learned & Next Steps</h3>
+      <span class="toggle">Read details ▼</span>
+    </div>
+    <div class="details-body">
+      <ul>
+        <li>Balanced algorithmic complexity with response times via pre‑generation.</li>
+        <li>Improved documentation and architecture diagrams for maintainers.</li>
+        <li>Next: A/B testing to measure AOV impact; add collaborative filtering for personalization.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="details section" data-collapsible>
+    <div class="details-header">
+      <h3>Screenshots / Video Output</h3>
+      <span class="toggle">View media ▼</span>
+    </div>
+    <div class="details-body">
+      <p>Add your screenshots, demo videos, or output examples here.</p>
+      <!-- Example: <img src="assets/images/screenshot1.png" alt="Project screenshot"> -->
+       <video width="100%" controls style="border-radius:8px;">
+         <source src="/Images_videos/Website_demo.mp4" type="video/mp4">
+       </video>
+    </div>
+  </section>
+
+  <section class="details section" data-collapsible>
+    <div class="details-header">
+      <h3>Credits</h3>
+      <span class="toggle">Read details ▼</span>
+    </div>
+    <div class="details-body">
+      <p>Solo project — backend architecture, algorithm implementation, database design, frontend integration, documentation.</p>
+    </div>
+  </section>
+
+  <p class="section"><a href="home.html">← Back to Home</a></p>
+</main>
+
+ <footer class="container footer">
+    <div>
+      <strong>Contact:</strong> <a href="mailto:jylim0924@gmail.com">jylim0924@gmail.com</a> • 
+      <a href="https://github.com/bing9821" target="_blank" rel="noopener">GitHub</a> • 
+      <a href="https://www.linkedin.com/in/jia-yu-475264307?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener">LinkedIn_jiayu</a> • 
+      <a href="https://wa.me/60165474145" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i> +60 16-547 4145</a>
+    </div>
+    <p class="muted">© <span id="y"></span> Jia Yu Lim</p>
+  </footer>
+<script src="portfolio.js"></script>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>

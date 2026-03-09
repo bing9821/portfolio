@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Resume — Jia Yu Lim</title>
+  <meta name="description" content="View and download my resume"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="portfolio.css"/>
+</head>
+<body>
+<header class="header">
+  <div class="container nav">
+    <div class="brand"><span class="dot"></span><strong>Jia Yu Lim</strong></div>
+    <nav class="nav-right">
+      <a href="home.html">Home</a>
+      <a href="home.html#projects">Projects</a>
+      <a href="home.html#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="section">
+    <h1>My Resume</h1>
+    <p class="muted">Preview my resume below or download the PDF file.</p>
+    
+    <div style="margin: 24px 0;">
+      <a href="https://drive.google.com/file/d/1AiJzQnfilW8HIoGl7-ANT9YbskPAtqXc/view?usp=sharing" target="_blank" class="btn"> Download Resume (PDF)</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div style="background: #fff; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow);">
+      <iframe 
+        src="https://drive.google.com/file/d/1AiJzQnfilW8HIoGl7-ANT9YbskPAtqXc/preview" 
+        width="100%" 
+        height="800px" 
+        style="border: none; display: block;"
+        title="Resume Preview">
+      </iframe>
+    </div>
+    <p style="text-align: center; margin-top: 16px; color: var(--muted); font-size: 14px;">
+      Can't see the PDF? <a href="https://drive.google.com/file/d/1AiJzQnfilW8HIoGl7-ANT9YbskPAtqXc/view?usp=sharing" target="_blank" rel="noopener">Open in Google Drive</a>
+    </p>
+  </section>
+
+  <section class="section" style="text-align: center;">
+    <a href="home.html" style="font-size: 16px;">← Back to Home</a>
+  </section>
+</main>
+
+ <footer class="container footer">
+    <div>
+      <strong>Contact:</strong> <a href="mailto:jylim0924@gmail.com">jylim0924@gmail.com</a> • 
+      <a href="https://github.com/bing9821" target="_blank" rel="noopener">GitHub</a> • 
+      <a href="https://www.linkedin.com/in/jia-yu-475264307?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener">LinkedIn_jiayu</a> • 
+      <a href="https://wa.me/60165474145" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i> +60 16-547 4145</a>
+    </div>
+    <p class="muted">© <span id="y"></span> Jia Yu Lim</p>
+  </footer>
+
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>

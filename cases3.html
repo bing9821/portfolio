@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Treasure Hunt A* Solver — Case Study</title>
+  <meta name="description" content="Hex-grid pathfinding with complex state optimization through traps, rewards, and forced-movement mechanics."/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="portfolio.css"/>
+</head>
+<body>
+<header class="header">
+  <div class="container nav">
+    <div class="brand"><span class="dot"></span><strong>Jia Yu Lim</strong></div>
+    <nav class="nav-right">
+      <a href="home.html">Home</a>
+      <a href="resume.html" target="_blank" rel="noopener">Resume</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="section card">
+    <div class="speed-read">
+      <h1>Treasure Hunt A* Solver</h1>
+      <p><strong>One‑liner:</strong> Hex‑grid pathfinding with complex state that optimizes routes through traps, rewards, and forced‑movement mechanics using custom heuristics.</p>
+
+      <div class="row chips">
+        <span class="tag">Group project</span>
+        <span class="tag">3 weeeks</span>
+        <span class="tag">Stack: Python, A*, Matplotlib, NumPy, Dataclasses</span>
+        <span class="tag"><a href="https://github.com/bing9821/TreasureHunt.git" target="_blank" rel="noopener">GitHub</a></span>
+      </div>
+
+      <p><strong>Problem → Outcome:</strong> Standard A* handles uniform‑cost grids. I built a stateful solver for odd‑q hex grids where room effects alter costs and movement. The system tracks energy multipliers, collected treasures, activated effects, and forced moves to compute truly optimal paths under compound penalties—solving 18‑step routes on 60‑cell boards in under 10 seconds.</p>
+
+      <h4>Three Proof Points</h4>
+      <ul class="bullets">
+        <li>Stateful A*: each node tracks position, treasures, activated effects, energy multiplier, and forced‑move queue</li>
+        <li>Hex odd‑q coordinates: correct 6‑direction movement with even/odd column offsets</li>
+        <li>Real‑time visualization: stepwise rendering with colored hexes and live f/g/h and open‑set views</li>
+      </ul>
+
+      <h4>Results</h4>
+      <ul class="bullets">
+        <li>&lt;10 s for 6×10 grids with 4 treasures and 13 traps/obstacles</li>
+        <li>Admissible heuristic blends Manhattan‑style distance, remaining treasures, and energy‑cost terms</li>
+        <li>2,000+ node expansions with detailed logs: successor evaluation, trap avoidance, per‑step cost breakdowns</li>
+      </ul>
+
+      <p><strong>Skills:</strong> AI Search • Algorithm Design • Complex State Management • Graph Pathfinding • Visualization • Data Structures • Python OOP</p>
+    </div>
+  </section>
+
+  <div class="section"></div>
+
+  <section class="details" data-collapsible>
+    <div class="details-header">
+      <h3>Approach</h3>
+      <span class="toggle">Read details ▼</span>
+    </div>
+    <div class="details-body">
+      <p>Used A* with a custom admissible heuristic; precomputed odd‑q neighbor tables for 6‑way movement; separated GameState (immutable), Node (priority item), and PathEvaluationInfo (logs); heap‑based open set (O(log n)), closed set keyed by full state signature; matplotlib animates progression with color‑coded effects.</p>
+    </div>
+  </section>
+
+  <section class="details section" data-collapsible>
+    <div class="details-header">
+      <h3>Architecture / Data Flow</h3>
+      <span class="toggle">Read details ▼</span>
+    </div>
+    <div class="details-body">
+      <ul>
+        <li><strong>Grid:</strong> odd‑q offset; neighbors vary by column parity (N, S, NE, NW, SE, SW)</li>
+        <li><strong>GameState:</strong> position; collected_treasures; available_treasures; activated_effects; energy_multiplier; forced_steps_remaining; last_direction</li>
+        <li><strong>Node:</strong> wraps GameState + g, h, f (f = g + h) for heap priority</li>
+        <li><strong>Effects:</strong> Traps: T1 (2× energy), T2 (2× time), T3 (forced 2 steps), T4 (clear uncollected treasures) | Rewards: R1 (½× energy), R2 (½× time) | One‑time activation tracked in activated_effects</li>
+        <li><strong>A* mechanics:</strong> min‑heap open set; closed set maps state signature → best g; generate successors → apply effects → enqueue</li>
+        <li><strong>Heuristic:</strong> h = hex distance to goal + treasure penalty + energy‑cost estimate (tuned to remain admissible)</li>
+        <li><strong>Output/vis:</strong> matplotlib RegularPolygon hexes; yellow path, green current; dynamic titles with step count and total cost</li>
+      </ul>
+    </div>
+  </section>
+
+
+  <section class="details section" data-collapsible>
+    <div class="details-header">
+      <h3>What I Learned & Next Steps</h3>
+      <span class="toggle">Read details ▼</span>
+    </div>
+    <div class="details-body">
+      <ul>
+        <li>Robust state hashing prevents collisions (include energy/effects/forced moves)</li>
+        <li>Odd‑q vs cube coords: neighbor quirks matter for correctness</li>
+        <li>Admissibility vs guidance: trap penalties in h risk overestimation—careful upper bounds are key</li>
+        <li>Python heapq details: tuple priors for deterministic tie‑breaks</li>
+        <li>Next: Apply T2 time multiplier to step costs (currently only T1 applied)</li>
+        <li>Explore bidirectional A* for larger boards</li>
+        <li>Partial‑order reduction to shrink state space (track only relevant effect activations)</li>
+        <li>Benchmark against Dijkstra, BFS, greedy best‑first</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="details section" data-collapsible>
+    <div class="details-header">
+      <h3>Screenshots / Video Output</h3>
+      <span class="toggle">View media ▼</span>
+    </div>
+    <div class="details-body">
+      <p>Early pathfinding: navigating from start through rewards toward first treasure.</p>
+      <!-- Example: <img src="assets/images/screenshot1.png" alt="Project screenshot"> -->
+       <img src="/Images_videos/Step0.png" alt="Step 0" style="width:100%; border-radius:8px; margin-bottom:12px;">
+       <img src="/Images_videos/Step1.png" alt="Step 1" style="width:100%; border-radius:8px; margin-bottom:12px;">
+       <img src="/Images_videos/Step2.png" alt="Step 2" style="width:100%; border-radius:8px; margin-bottom:12px;">
+       <img src="/Images_videos/Step3.png" alt="Step 3" style="width:100%; border-radius:8px; margin-bottom:12px;">
+       <img src="/Images_videos/Step4.png" alt="Step 4" style="width:100%; border-radius:8px;">
+    </div>
+  </section>
+
+  <section class="details section" data-collapsible>
+    <div class="details-header">
+      <h3>Credits</h3>
+      <span class="toggle">Read details ▼</span>
+    </div>
+    <div class="details-body">
+      <p>Hex logic adapted from common odd‑q references; implementation original.</p>
+    </div>
+  </section>
+
+  <p class="section"><a href="home.html">← Back to Home</a></p>
+</main>
+
+ <footer class="container footer">
+    <div>
+      <strong>Contact:</strong> <a href="mailto:jylim0924@gmail.com">jylim0924@gmail.com</a> • 
+      <a href="https://github.com/bing9821" target="_blank" rel="noopener">GitHub</a> • 
+      <a href="https://www.linkedin.com/in/jia-yu-475264307?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener">LinkedIn_jiayu</a> • 
+      <a href="https://wa.me/60165474145" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i> +60 16-547 4145</a>
+    </div>
+    <p class="muted">© <span id="y"></span> Jia Yu Lim</p>
+  </footer>
+<script src="portfolio.js"></script>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>

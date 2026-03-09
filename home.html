@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Jia Yu Lim — Portfolio</title>
+  <meta name="description" content="CS/IT student portfolio: web, data, and algorithms projects with clean case studies."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="portfolio.css"/>
+  <link rel="stylesheet" href="portfolio.js"/>
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <div class="brand">
+        <span class="dot"></span>
+        <strong>Jia Yu Lim</strong>
+      </div>
+      <nav class="nav-right">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#about">About</a>
+        <a href="resume.html">Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero section">
+      <h1>Hi, I’m Jia Yu — I make web apps that run smoothly and explain data clearly.</h1>
+      <p class="muted">CS/IT student focused on clear code, simple UX, and detailed documentation.</p>
+      <div class="hero-buttons">
+        <a class="btn" href="#projects" data-scroll-projects>View Projects</a>
+        <a class="btn secondary" href="resume.html">View Resume</a>
+      </div>
+      <div class="highlights">
+        <span class="tag">3 projects with case studies</span>
+        <span class="tag">SQL • Oracle APEX</span>
+        <span class="tag">REST APIs • JS</span>
+        <span class="tag">MYT (UTC+8)</span>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <h2>Featured Projects</h2>
+      <p class="muted">Three focused case studies that show how I think and what I deliver.</p>
+      <div class="grid grid-3" style="margin-top:16px">
+        <!-- Project card 1 -->
+        <article class="card">
+          <h3>NIUKEE E‑commerce Platform</h3>
+          <p>Online store with smart product suggestions and auto‑applied discounts.</p>
+          <div class="project-meta">
+            <span class="tag">Full-stack</span><span class="tag">Smart recommendations system</span><span class="tag">Data analysis</span>
+          </div>
+          <hr/>
+          <a class="btn" href="cases1.html">View case study →</a>
+        </article>
+        <!-- Project card 2 -->
+        <article class="card">
+          <h3>Video Processing Pipeline</h3>
+          <p>Privacy-aware video compositor with intelligent brightness adaptation and brand overlays.</p>
+          <div class="project-meta">
+            <span class="tag">Computer Vision</span><span class="tag">Face blurring</span><span class="tag">Brightness Detection</span>
+          </div>
+          <hr/>
+          <a class="btn" href="cases2.html">View case study →</a>
+        </article>
+        <!-- Project card 3 -->
+        <article class="card">
+          <h3>Treasure Hunt A* Solver</h3>
+          <p>Smart treasure path using custom A* on hex maps.</p>
+          <div class="project-meta">
+            <span class="tag">A* Pathfinding</span><span class="tag">Graph Traversal</span><span class="tag">Game AI</span>
+          </div>
+          <hr/>
+          <a class="btn" href="cases3.html">View case study →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <h2>Skills</h2>
+      <div class="card">
+        <p><strong>Backend:</strong> Node.js, Express, RESTful APIs, MongoDB/Mongoose, basic auth/session handling</p>
+        <p><strong>Frontend:</strong> HTML5, CSS3, JavaScript, Handlebars, responsive design</p>
+        <p><strong>Data & Databases:</strong> SQL, MongoDB/Mongoose, Oracle APEX, schema design, indexing basics</p>
+        <p><strong>Data Analysis:</strong> Python, SQL, Excel</p>
+        <p><strong>Algorithms & AI:</strong> Search algorithms (BFS, A*), fuzzy logic (fuzzifiers, rule bases, defuzzification)</p>
+        <p><strong>Design:</strong> Figma, Canva</p>
+        <p class="muted"> *Selected skills at working-knowledge level; demonstrated in project case studies*</p>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2>About</h2>
+      <div class="two-col">
+        <div class="card">
+          <p>Clean code. Practical docs. Continuous growth. Lately: exploring more of Python, and a growing interest in AI and UI/UX.</p>
+          <p>I enjoy Q&A sessions with AI—solving problems and improving my questioning along the way.</p>
+        </div>
+        <div class="card">
+          <h3>Quick facts</h3>
+          <div class="skills-list">
+            <span class="tag">Location: Ipoh,Perak, MYT (UTC+8)</span>
+            <span class="tag">Open to internships</span>
+            <span class="tag">Email: <a href="mailto:jylim0924@gmail.com">jylim0924@gmail.com</a></span>
+            <span class="tag"><a href="https://github.com/bing9821" target="_blank" rel="noopener">GitHub</a></span>
+            <span class="tag"><a href="https://www.linkedin.com/in/jia-yu-475264307?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener">LinkedIn</a></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <div>
+      <strong>Contact:</strong> <a href="mailto:jylim0924@gmail.com">jylim0924@gmail.com</a> • 
+      <a href="https://github.com/bing9821" target="_blank" rel="noopener">GitHub</a> • 
+      <a href="https://www.linkedin.com/in/jia-yu-475264307?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener">LinkedIn_jiayu</a> • 
+      <a href="https://wa.me/60165474145" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i> +60 16-547 4145</a>
+    </div>
+    <p class="muted">© <span id="y"></span> Jia Yu Lim</p>
+  </footer>
+
+  <script src="portfolio.js"></script>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
